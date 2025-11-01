@@ -1,4 +1,3 @@
-// Running app from here
 import express from "express";
 
 const app = express();
