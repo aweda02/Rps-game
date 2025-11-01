@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Styled Form</title>
+  <link rel="stylesheet" href="/thegate.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to Rock 🗿 Paper 📜 Scissor ✂️  Game</h1>
+    <p>Please provide the following information to proceed:</p>
+
+    <form action="/submit" method="POST">
+      <div class="field">
+        <label for="firstname">First Name:</label>
+        <input type="text" id="firstname" name="firstname" required>
+      </div>
+
+      <div class="field">
+        <label for="lastname">Last Name:</label>
+        <input type="text" id="lastname" name="lastname" required>
+      </div>
+
+      <div class="field">
+        <p class="question">WHAT THE FULL MEANINIG OF <span>HTTP</span></p>
+        <label for="question">Please Provide Your Answer👇</label>
+        <textarea id="question" name="question" rows="2" required></textarea>
+      </div>
+
+      <button type="submit">Proceed</button>
+    </form>
+  </div>
+             <!-- londing -->
+    <div class="londing">
+        <div class="spinner"></div>
+        <h1>Welcome to Rock 🗿 Paper 📜 Scissor ✂️  Game</h1>
+    </div>
+    <script>
+      const londing = document.querySelector('.londing');
+
+// londing page 
+setTimeout(() => {
+    londing.classList.add('removeLonding');
+    setTimeout(() => {
+        londing.remove();
+    }, 1000);
+}, 2000);
+    </script>
+</body>
+</html>

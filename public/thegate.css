@@ -1,0 +1,151 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.container {
+  background: #fff;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  width: 320px;
+  text-align: center;
+}
+
+h1 {
+  color: #2b4eff;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 0.95rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.field {
+  text-align: left;
+  margin-bottom: 15px;
+}
+.question{
+  color: red;
+  font-weight: 700;
+  text-align: center;
+}
+.question span {
+  color: green;
+  font-size: 18px;
+  font-weight:  900;
+  display: block;
+}
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #444;
+}
+
+input, textarea {
+  width: 100%;
+  max-width: 300px;
+  max-height: 50px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #2b4eff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  background-color: #1f37c9;
+}
+
+
+/* londing page */
+
+.londing{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: -1%;
+    left: 0;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* glass effect */
+    background: rgba(255, 255, 255, 0.22);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(9.9px);
+    -webkit-backdrop-filter: blur(9.9px);
+    transition: all 1s ease-in-out;
+    /* display: none; */
+
+    /* border: 1px solid black; */
+}
+.removeLonding{
+    opacity: 0.2;
+}
+.londing h1{
+    font-family: var(--font-primary);
+    font-size: 24px;
+    text-align: center;
+    color: blue;
+    margin-block: 10px;
+}
+.spinner {
+   position: relative;
+   width: 56px;
+   height: 56px;
+}
+
+.spinner::before,
+.spinner::after {
+   content: '';
+   width: 100%;
+   height: 100%;
+   animation: spinner-rfi6tk 1s infinite linear;
+   box-sizing: border-box;
+   border: 11.2px solid rgba(71,75,255,0.1);
+   border-radius: 50%;
+   position: absolute;
+}
+
+.spinner::before {
+   animation-direction: reverse;
+   border-right-color: #474bff;
+   right: calc(50% - 5.6px);
+}
+
+.spinner::after {
+   border-left-color: #474bff;
+   left: calc(50% - 5.6px);
+}
+
+@keyframes spinner-rfi6tk {
+   0% {
+      transform: rotate(0deg);
+   }
+
+   50%, 100% {
+      transform: rotate(360deg);
+   }
+}
