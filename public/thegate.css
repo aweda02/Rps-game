@@ -5,26 +5,63 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
+  background: radial-gradient(circle at top, #0b0f19, #060a12);
 }
 
 .container {
-  background: #fff;
+  background: #1c1f2b;
   padding: 25px 30px;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  width: 320px;
+  width: 310px;
   text-align: center;
+  position: relative;
+}
+@property --angle {
+  syntax:"<angle>"
+  initial-value:0deg;
+  inherits:false;
+}
+.container::after, .container::before{
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+left: 50%;
+top: 50%;
+translate: -50% -50%;
+padding: 3px;
+
+  background-image: conic-gradient(   from var(--angle) ,#ff4545, #00ff99,#006aff,#ff0095);
+  z-index: -1;
+  animation: 3s spin linear infinite;
+}
+.container::before{
+  filter: blur(1rem);
+  opacity: 0.4;
 }
 
+
+@keyframes spin {
+   from {
+      --angle:0deg;
+   }
+
+   to {
+      --angle:360deg;
+   }
+}
 h1 {
-  color: #2b4eff;
+  color: #00f6ff;
+      text-shadow: 0 0 8px #00f6ff;
   font-size: 1.3rem;
   margin-bottom: 10px;
 }
 
 p {
   font-size: 0.95rem;
-  color: #333;
+  color:#ccc;
   margin-bottom: 20px;
 }
 
@@ -42,6 +79,7 @@ p {
   font-size: 18px;
   font-weight:  900;
   display: block;
+  text-shadow: 0 0 1px #00ff99;
 }
 label {
   display: block;
@@ -55,36 +93,47 @@ input, textarea {
   max-width: 300px;
   max-height: 50px;
   padding: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid ;
+  border-color: #007bff;
   border-radius: 6px;
   font-size: 0.95rem;
   outline: none;
+  background: #444;
 }
 
 button {
   width: 100%;
   padding: 10px;
-  background-color: #2b4eff;
+  background: linear-gradient(90deg, #00f6ff, #007bff);
   color: white;
   border: none;
   border-radius: 6px;
   font-size: 1rem;
   cursor: pointer;
   transition: 0.2s;
+  box-shadow: 0 0 10px #00f6ff;
 }
 
 button:hover {
-  background-color: #1f37c9;
+      background: linear-gradient(90deg, #007bff, #00f6ff);
+      box-shadow: 0 0 20px #00f6ff;
+      transform: translateY(-3px);
+    }
+
+input:focus,textarea:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
 }
+
+
 
 
 /* londing page */
 
 .londing{
-    position: absolute;
     width: 100%;
-    height: 100%;
-    top: -1%;
+    height: 100vh;
+    top: 0;
     left: 0;
     z-index: 999;
     display: flex;
@@ -92,16 +141,21 @@ button:hover {
     align-items: center;
     flex-direction: column;
     /* glass effect */
-    background: rgba(255, 255, 255, 0.22);
+    background: #1c1f2b;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(9.9px);
     -webkit-backdrop-filter: blur(9.9px);
     transition: all 1s ease-in-out;
     /* display: none; */
-
     /* border: 1px solid black; */
+    position: relative;
+    position: absolute;
 }
+
+
+
 .removeLonding{
+    
     opacity: 0.2;
 }
 .londing h1{
@@ -115,6 +169,7 @@ button:hover {
    position: relative;
    width: 56px;
    height: 56px;
+background: #1c1f2b;
 }
 
 .spinner::before,

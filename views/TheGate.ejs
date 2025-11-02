@@ -8,29 +8,33 @@
 </head>
 <body>
   <div class="container">
-    <h1>Welcome Back !</h1>
+    <h1> 🎮 Welcome Back !</h1>
     <p>Please provide the following information to proceed:</p>
-
+  
     <form action="/submit" method="POST">
       <div class="field">
         <label for="firstname">First Name:</label>
         <input type="text" id="firstname" name="firstname" required>
       </div>
-
+  
       <div class="field">
         <label for="lastname">Last Name:</label>
         <input type="text" id="lastname" name="lastname" required>
       </div>
-
+  
       <div class="field">
         <p class="question"> To play the game answer me first : <span> <%= qst %> </span></p>
         <label for="question">Please Provide Your Answer👇</label>
         <textarea id="question" name="useranswer" rows="2" required></textarea>
       </div>
-
-      <button type="submit">Proceed</button>
+  
+      <button type="submit"> 🚀 Proceed</button>
     </form>
   </div>
+  
+  
+    
+  
              <!-- londing -->
     <div class="londing">
         <div class="spinner"></div>
