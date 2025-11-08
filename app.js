@@ -8,26 +8,26 @@ app.set("view engine", "ejs");
 
 //question : 
 const qsts = [
-  { q: "What is 2 + 2?", a: "4" },
-  { q: "What is the capital of France?", a: "Paris" },
-  { q: "What color do you get by mixing red and blue?", a: "Purple" },
-  { q: "How many days are in a leap year?", a: "366" },
-  { q: "What is 10 / 2?", a: "5" },
-  { q: "What is the largest planet in our solar system?", a: "Jupiter" },
-  { q: "What is the square root of 64?", a: "8" },
-  { q: "How many continents are there?", a: "7" },
-  { q: "What is 5 * 6?", a: "30" },
-  { q: "What is the boiling point of water in °C?", a: "100" },
-  { q: "Who wrote 'Romeo and Juliet'?", a: "Shakespeare" },
-  { q: "What is the smallest prime number?", a: "2" },
-  { q: "What is 12 - 5?", a: "7" },
-  { q: "What gas do humans exhale?", a: "Carbon dioxide" },
-  { q: "How many hours in a day?", a: "24" },
-  { q: "What is 9 + 10?", a: "19" },
-  { q: "What is the freezing point of water in °C?", a: "0" },
-  { q: "Who painted the Mona Lisa?", a: "Leonardo da Vinci" },
-  { q: "What is 7 * 8?", a: "56" },
-  { q: "What is the chemical symbol for gold?", a: "Au" }
+  { q: "I’m round, I shine at night, and I disappear in the morning. What am I?", a: "Moon" },
+  { q: "I have hands but can’t clap. What am I?", a: "Clock" },
+  { q: "You open me every day, but I never close. What am I?", a: "Eyes" },
+  { q: "I’m full of keys but can’t open a door. What am I?", a: "Keyboard" },
+  { q: "I come down but never go up. What am I?", a: "Rain" },
+  { q: "I’m black when you buy me, red when you use me, and gray when you throw me away. What am I?", a: "Charcoal" },
+  { q: "I’m always running, but I never move. What am I?", a: "Time" },
+  { q: "The more you take, the more you leave behind. What am I?", a: "Footsteps" },
+  { q: "I’m tall when I’m young and short when I’m old. What am I?", a: "Candle" },
+  { q: "I can fly without wings. What am I?", a: "Cloud" },
+  { q: "I’m cold, I fall from the sky, and I melt when I touch the ground. What am I?", a: "Snow" },
+  { q: "I’m always in front of you but you can’t see me. What am I?", a: "Future" },
+  { q: "I get sharper the more you use me. What am I?", a: "Mind" },
+  { q: "I’m something you can catch but can’t throw. What am I?", a: "Cold" },
+  { q: "I have a face but no eyes. What am I?", a: "Clock" },
+  { q: "You can hear me, but I have no mouth. What am I?", a: "Echo" },
+  { q: "You can break me without touching me. What am I?", a: "Promise" },
+  { q: "I follow you everywhere but disappear in the dark. What am I?", a: "Shadow" },
+  { q: "I get wetter the more I dry. What am I?", a: "Towel" },
+  { q: "I’m always hungry but never eat. What am I?", a: "Fire" }
 ];
 
 let getRandomQst = 0;
