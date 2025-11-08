@@ -7,49 +7,45 @@
   <link rel="stylesheet" href="/thegate.css" />
 </head>
 <body>
+  <div class="runes">
+    <div class="rune">⚔</div>
+    <div class="rune">☠</div>
+    <div class="rune">⚡</div>
+    <div class="rune">★</div>
+    <div class="rune">◆</div>
+    <div class="rune">▼</div>
+  </div>
+
   <div class="container">
-    <h1> 🎮 Welcome Back !</h1>
-    <p>Please provide the following information to proceed:</p>
-  
+    <div class="corner top-left"></div>
+    <div class="corner top-right"></div>
+    <div class="corner bottom-left"></div>
+    <div class="corner bottom-right"></div>
+
+    <h1>Ancient Game</h1>
+    <p class="subtitle">Brave soul, write your name to summon the fates… and face the shadows that lurk beyond.</p>
+
+    <div class="divider"></div>
+
     <form action="/submit" method="POST">
       <div class="field">
-        <label for="firstname">First Name:</label>
-        <input type="text" id="firstname" name="firstname" required>
+        <label for="playername">⚔ Player Name:</label>
+        <input type="text" id="playername" name="playername" required placeholder="Inscribe your name in blood...">
       </div>
-  
+
       <div class="field">
-        <label for="lastname">Last Name:</label>
-        <input type="text" id="lastname" name="lastname" required>
+        <div class="question">
+          To awaken destiny, answer this riddle:
+          <span><%= qst %></span>
+        </div>
+        <label for="question">☠ Your Answer:</label>
+        <textarea id="question" name="useranswer" rows="3" required placeholder="Whisper your answer to the void..."></textarea>
       </div>
-  
-      <div class="field">
-        <p class="question"> To play the game answer me first : <span> <%= qst %> </span></p>
-        <label for="question">Please Provide Your Answer👇</label>
-        <textarea id="question" name="useranswer" rows="2" required></textarea>
-      </div>
-  
-      <button type="submit"> 🚀 Proceed</button>
+
+      <button type="submit">
+        <span>⚡ Step Into the Darkness ⚡</span>
+      </button>
     </form>
   </div>
-  
-  
-    
-  
-             <!-- londing -->
-    <div class="londing">
-        <div class="spinner"></div>
-        <h1>Welcome to Rock 🗿 Paper 📜 Scissor ✂️  Game</h1>
-    </div>
-    <script>
-      const londing = document.querySelector('.londing');
-
-// londing page 
-setTimeout(() => {
-    londing.classList.add('removeLonding');
-    setTimeout(() => {
-        londing.remove();
-    }, 1000);
-}, 2000);
-    </script>
 </body>
 </html>
