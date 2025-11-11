@@ -44,7 +44,7 @@ app.get("/", (req, res) => {
 app.post("/submit", (req, res)=>{
     const useranswer = req.body.useranswer.trim().toLowerCase();
     if(useranswer == qsts[getRandomQst].a.trim().toLocaleLowerCase()){
-        res.send("<h1>Next step</h1>");
+        res.render("TheGame.ejs");
     } else{
         res.send("<h1>Go back to the home page</h1>");
     }

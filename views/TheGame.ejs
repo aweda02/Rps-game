@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="thegame.css">
+  <title>RPS Battle</title>
+</head>
+<body>
+  
+   <div class="intro">
+    <div class="flash-bg"></div>
+    <div class="glow-fog"></div>
+    <div class="energy-ring"></div>
+    <div class="sparks"></div>
+    <h1 class="title">WELCOME INTO THE <br>DARKNESS</h1>
+    <p class="subtitle">The Battle Awaits...</p>
+    <button class="start-button">ENTER GAME</button>
+  </div>
+  
+  
+  
+  <div class="game-container">
+    <div class="sidebar">
+      <h2>RPS BATTLE</h2>
+      <div class="menu">
+        <a href="#">Play</a>
+        <a href="#">Lobby</a>
+        <a href="#">Tournaments</a>
+        <a href="#">Settings</a>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="battle-area">
+        <div class="player">
+          <div class="lives-container">
+            <div class="life">♥️</div>
+            <div class="life">♥️</div>
+            <div class="life">♥️</div>
+            <div class="life">♥️</div>
+            <div class="life">♥️</div>
+            <div class="life">♥️</div>
+            <div class="life">♥️</div>
+            <div class="life">♥️</div>
+            <div class="life">♥️</div>
+            <div class="life">♥️</div>
+          </div>
+          <div class="emoji">✊</div>
+          <p>You</p>
+        </div>
+        <div class="vs">VS</div>
+        <div class="opponent">
+           <div class="lives-container">
+            <div class="life">♥️</div>
+            <div class="life">♥️</div>
+            <div class="life">♥️</div>
+            <div class="life">♥️</div>
+            <div class="life">♥️</div>
+            <div class="life">♥️</div>
+            <div class="life">♥️</div>
+            <div class="life">♥️</div>
+            <div class="life">♥️</div>
+            <div class="life">♥️</div>
+          </div>
+          <div class="emoji">✊</div>
+          <p>Opponent</p>
+        </div>
+      </div>
+
+      <div class="choices">
+        <button>✊ Rock</button>
+        <button>✋ Paper</button>
+        <button>✌️ Scissors</button>
+        <button>💣 Bomb</button>
+        <button>🛡️ shield</button>
+      </div>
+    </div>
+  </div>
+</body>
+ <script>
+    document.addEventListener("DOMContentLoaded", () => {
+  const sparks = document.querySelector('.sparks');
+  const entergame = document.querySelector('.start-button');
+  const intro = document.querySelector('.intro');
+  const body = document.querySelector('body');
+  const gamecont = document.querySelector('.game-container');
+
+  intro.addEventListener("click", () => {
+    intro.classList.add("close-intro");
+    body.classList.add("body-height");
+    gamecont.classList.add("enter-game");
+    var audio = new Audio('music.mp3')
+    audio.loop= true;
+audio.play();
+  });
+
+  for (let i = 0; i < 24; i++) {
+    const s = document.createElement('span');
+    s.style.setProperty('--r', `${Math.random() * 360}deg`);
+    s.style.animationDelay = `${Math.random() * 2}s`;
+    sparks.appendChild(s);
+  }
+});
+  </script>
+</html>
