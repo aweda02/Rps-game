@@ -326,7 +326,12 @@
       position: relative;
       z-index: 1;
     }
-
+    .bomb{
+      z-index: 99999;
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, 50%);
+    }
     @media (max-width: 600px) {
       .container {
         padding: 40px 30px;
