@@ -17,6 +17,7 @@
   </div>
 
   <div class="container">
+    <img class="bomb" src="/src/BomB.gif" alt="BomB Gif">
     <div class="corner top-left"></div>
     <div class="corner top-right"></div>
     <div class="corner bottom-left"></div>
@@ -47,5 +48,23 @@
       </button>
     </form>
   </div>
+
+  <script>
+    
+    let wrong = <%= isWrong %>;
+    const bomb = document.querySelector(".bomb");
+    const audio = new Audio("/src/bombSound.mp3"); 
+    bomb.style.display="none";
+    if(wrong == 1){
+      bomb.style.display="block";
+      audio.play();
+      setTimeout(() => {
+        audio.pause();
+        bomb.style.display="none";
+      }, 2500);
+  
+    }
+  </script>
+
 </body>
 </html>
