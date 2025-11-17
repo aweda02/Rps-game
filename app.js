@@ -36,7 +36,7 @@ let getRandomQst = 0;
 app.get("/", (req, res) => {
     getRandomQst = Math.floor(Math.random() * qsts.length); // here to get the index of the qst
     res.render("TheGate.ejs", {
-    qst: qsts[getRandomQst].q
+    qst: qsts[getRandomQst].q, isWrong: 0
     });
 });
 
@@ -46,7 +46,7 @@ app.post("/submit", (req, res)=>{
     if(useranswer == qsts[getRandomQst].a.trim().toLocaleLowerCase()){
         res.render("TheGame.ejs");
     } else{
-        res.send("<h1>Go back to the home page</h1>");
+        res.render("TheGate.ejs", {qst: qsts[getRandomQst].q ,isWrong: 1});
     }
 });
 
