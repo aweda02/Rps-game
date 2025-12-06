@@ -7,7 +7,7 @@
   <title>RPS Battle</title>
 </head>
 <body>
-  
+  <div class="funnymessagesdisplay"> <%= funnyMessage %></div>
    <div class="intro">
     <div class="flash-bg"></div>
     <div class="glow-fog"></div>
@@ -34,46 +34,36 @@
     <div class="main">
       <div class="battle-area">
         <div class="player">
-          <div class="lives-container">
-            <div class="life">♥️</div>
-            <div class="life">♥️</div>
-            <div class="life">♥️</div>
-            <div class="life">♥️</div>
-            <div class="life">♥️</div>
-            <div class="life">♥️</div>
-            <div class="life">♥️</div>
-            <div class="life">♥️</div>
-            <div class="life">♥️</div>
-            <div class="life">♥️</div>
+          <div class="player-lives life">
+             <h4><%= playername %></h4>
+            <div class="player-score score">
+              <%= playerScore %>
+            </div>
           </div>
           <div class="emoji">✊</div>
-          <p>You</p>
+          <p><%= playername %></p>
         </div>
         <div class="vs">VS</div>
         <div class="opponent">
-           <div class="lives-container">
-            <div class="life">♥️</div>
-            <div class="life">♥️</div>
-            <div class="life">♥️</div>
-            <div class="life">♥️</div>
-            <div class="life">♥️</div>
-            <div class="life">♥️</div>
-            <div class="life">♥️</div>
-            <div class="life">♥️</div>
-            <div class="life">♥️</div>
-            <div class="life">♥️</div>
+          <div class="computer-lives life">
+            <h4>Computer</h4>
+            <div class="computer-score score">
+              <%= computerScore %>
+            </div>
           </div>
           <div class="emoji">✊</div>
-          <p>Opponent</p>
+          <p>Computer</p>
         </div>
       </div>
 
       <div class="choices">
-        <button>✊ Rock</button>
-        <button>✋ Paper</button>
-        <button>✌️ Scissors</button>
-        <button>💣 Bomb</button>
-        <button>🛡️ shield</button>
+       <form action="/thegame" method="POST">
+        <button type="summit">✊ Rock</button>
+        <button type="summit">✋ Paper</button>
+        <button  type="summit">✌️ Scissors</button>
+        <button  type="summit">💣 Bomb</button>
+        <button type="summit">🛡️ shield</button>
+        </form>
       </div>
     </div>
   </div>

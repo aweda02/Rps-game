@@ -36,19 +36,111 @@ let getRandomQst = 0;
 app.get("/", (req, res) => {
     getRandomQst = Math.floor(Math.random() * qsts.length); // here to get the index of the qst
     res.render("TheGate.ejs", {
-    qst: qsts[getRandomQst].q, isWrong: 0
+    qst: qsts[getRandomQst].q, 
+    isWrong: 0
     });
 });
-
+const computerScore = "";
+        const playerScore = "";
 
 app.post("/submit", (req, res)=>{
     const useranswer = req.body.useranswer.trim().toLowerCase();
+    const playername = req.body.playername.trim().toLowerCase();
+    computerScore = 10;
+    playerScore = 10;
     if(useranswer == qsts[getRandomQst].a.trim().toLocaleLowerCase()){
-        res.render("TheGame.ejs");
+        res.render("TheGame.ejs"
+, { 
+    computerScore:computerScore,
+    playerScore: playerScore ,
+     playername:playername
+  } );
     } else{
         res.render("TheGate.ejs", {qst: qsts[getRandomQst].q ,isWrong: 1});
     }
 });
+
+//game functionality
+var playermoves = document.querySelectorAll(".playermove")
+
+// Random move function
+const getRandomMove = () => {
+  const moves = ['rock', 'paper', 'scissors', 'bomb', 'shield'];
+  return moves[Math.floor(Math.random() * moves.length)];
+};
+
+// Funny messages
+const funnyMessages = {
+  win: () => {
+    const messages = [
+      "You crushed it! 💪🏽",
+      "Computer is crying in binary 😭",
+      "Victory dance time! 💃"
+    ];
+    return messages[Math.floor(Math.random() * messages.length)];
+  },
+  lose: () => {
+    const messages = [
+      "Defeated! The machine reigns supreme 🤖",
+      "Better luck next round 😅",
+      "Ouch! That one hurt 🥲"
+    ];
+    return messages[Math.floor(Math.random() * messages.length)];
+  },
+  tie: () => {
+    const messages = [
+      "It’s a draw — balance in the universe 🌍",
+      "Nobody wins, nobody loses 😐",
+      "Try again — destiny awaits!"
+    ];
+    return messages[Math.floor(Math.random() * messages.length)];
+  }
+};
+
+// Decide winner
+function decideWinner(player, computer) {
+  if (player === computer){
+    
+  } return "tie";
+
+  const winRules = {
+    rock: ['scissors', 'shield'],
+    paper: ['rock', 'bomb'],
+    scissors: ['paper', 'shield'],
+    bomb: ['rock', 'paper', 'scissors'],
+    shield: ['bomb']
+  };
+
+  const playerBeats = winRules[player];
+
+  if (!playerBeats) return "lose";
+
+  if (playerBeats.includes(computer)) return "win";
+
+  return "lose";
+}
+
+
+app.post("/thegame", (req, res) => {
+  const player = req.body.useranswer.trim().toLowerCase();
+  const computer = getRandomMove();
+
+  const result = decideWinner(player, computer); 
+
+  // Choose the funny message
+  let message;
+  if (result === "win") message = funnyMessages.win();
+  computerScore--
+  else if (result === "lose") message = funnyMessages.lose();
+  playerScore--
+  else message = funnyMessages.tie();
+
+  // Render EJS page with result
+  res.render("TheGame.ejs", {
+    funnyMessage: message
+  });
+});
+ 
 
 
 
