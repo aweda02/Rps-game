@@ -7,7 +7,10 @@
   <title>RPS Battle</title>
 </head>
 <body>
-  <div class="funnymessagesdisplay"> <%= funnyMessage %></div>
+  <div class="game-status">
+    <h2 class="funny-messages"></h2>
+    <h3 class="game-winner"></h3>
+  </div>
    <div class="intro">
     <div class="flash-bg"></div>
     <div class="glow-fog"></div>
@@ -32,15 +35,23 @@
     </div>
 
     <div class="main">
+      <div class="game-status-container">
+        <div class="game-status">
+    <h2 class="funny-messages"></h2>
+    <h3 class="game-winner">
+      <br>
+    </h3>
+  </div>
+      </div>
       <div class="battle-area">
         <div class="player">
           <div class="player-lives life">
              <h4><%= playername %></h4>
             <div class="player-score score">
-              <%= playerScore %>
+                10
             </div>
           </div>
-          <div class="emoji">✊</div>
+          <div class="emoji playeremoji">✊</div>
           <p><%= playername %></p>
         </div>
         <div class="vs">VS</div>
@@ -48,25 +59,27 @@
           <div class="computer-lives life">
             <h4>Computer</h4>
             <div class="computer-score score">
-              <%= computerScore %>
+              10
             </div>
           </div>
-          <div class="emoji">✊</div>
+          <div class="emoji computeremoji">✊</div>
           <p>Computer</p>
         </div>
       </div>
 
       <div class="choices">
-       <form action="/thegame" method="POST">
-        <button type="summit">✊ Rock</button>
-        <button type="summit">✋ Paper</button>
-        <button  type="summit">✌️ Scissors</button>
-        <button  type="summit">💣 Bomb</button>
-        <button type="summit">🛡️ shield</button>
-        </form>
+        <button data-id="rock" class="player-chioce">✊ Rock</button>
+        <button data-id="Paper" class="player-chioce">✋ Paper</button>
+        <button data-id="scissors" class="player-chioce">✌️ Scissors</button>
+        <button data-id="bomb" class="player-chioce bomb">💣 Bomb <div class="bomb-count"></div></button>
+        <button data-id="shield" class="player-chioce shield">🛡️ shield
+        <div class="shield-count"></div>
+        </button>
       </div>
     </div>
   </div>
+  
+  
 </body>
  <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -92,5 +105,188 @@ audio.play();
     sparks.appendChild(s);
   }
 });
+
+
+
+
+
+var playerChioce = document.querySelectorAll(".player-chioce")
+var domcomputerScore = document.querySelector(".computer-score")
+var domplayerScore = document.querySelector(".player-score")
+var playerEmoji = document.querySelector(".playeremoji")
+var computerEmoji = document.querySelector(".computeremoji")
+var gameStatusContainer = document.querySelector(".game-status-container")
+var gameStatus = document.querySelector(".game-status")
+var domfunnymessages = document.querySelector(".funny-messages")
+var domgamewinner = document.querySelector(".game-winner")
+
+
+    // game message
+function gameMessages(fm,dm) {
+setTimeout(() => {
+  gameStatusContainer.style.display = "block"
+  gameStatus.style.display = "flex";
+
+  setTimeout(() => {
+    gameStatus.style.display = "none";
+    gameStatusContainer.style.display = "none";
+  }, 3000);
+},300);
+allMessages(fm,dm)
+}
+function allMessages(gfm,gdm){
+  domgamewinner.textContent = gdm
+  domfunnymessages.textContent = gfm
+}
+
+// Funny messages
+const funnyMessages = {
+  win: () => {
+    const messages = [
+      "You crushed it! 💪🏽",
+      "Computer is crying in binary 😭",
+      "Victory dance time! 💃"
+    ];
+    return messages[Math.floor(Math.random() * messages.length)];
+  },
+  lose: () => {
+    const messages = [
+      "Defeated! The machine reigns supreme 🤖",
+      "Better luck next round 😅",
+      "Ouch! That one hurt 🥲"
+    ];
+    return messages[Math.floor(Math.random() * messages.length)];
+  },
+  tie: () => {
+    const messages = [
+      "It’s a draw — balance in the universe 🌍",
+      "Nobody wins, nobody loses 😐",
+      "Try again — destiny awaits!"
+    ];
+    return messages[Math.floor(Math.random() * messages.length)];
+  }
+};
+
+
+
+
+// Random move function
+const getRandomMove = () => {
+  const moves = ['rock', 'paper', 'scissors', 'bomb', 'shield'];
+  var computerpick = ["🪨 ","✋", "✌️","💣 "," 🛡️ " ]
+  var random = Math.floor(Math.random() * moves.length)
+  computerEmoji.textContent = computerpick[random];
+  return moves[random];
+};
+
+// player pick
+var dombomb =  document.querySelector('.bomb');
+var domshield =  document.querySelector('.shield');
+var dombombcount =  document.querySelector('.bomb-count');
+var domshieldcount =  document.querySelector('.shield-count');
+
+var bombcountdown = 2;
+var shieldcountdown = 3;
+dombombcount.textContent = bombcountdown;
+domshieldcount.textContent = shieldcountdown
+playerChioce.forEach((item) => {
+  item.addEventListener("click",(e)=>{
+    var id = e.currentTarget
+    var playerpickid = id.dataset.id.toLowerCase();
+    
+    if (playerpickid === "bomb"){
+      bombcountdown--
+    dombombcount.textContent = bombcountdown;
+      if(bombcountdown === 0){
+        dombomb.remove()
+      }
+    }
+    if (playerpickid === "shield"){
+      shieldcountdown--
+    domshieldcount.textContent = shieldcountdown;
+      if(shieldcountdown === 0){
+        domshield.remove()
+      }
+    }
+    
+   playerEmoji.textContent = id.textContent.slice(0,1)
+    
+    var computerChioce = getRandomMove()
+    decideWinner(playerpickid,computerChioce)
+  })
+})
+
+// game logic to decide winner
+var computerScore = 10;
+var playerScore = 10;
+
+domplayerScore.textContent = playerScore;
+domcomputerScore.textContent = computerScore;
+
+function decideWinner(player, computer) {
+
+  if (player === computer) {
+    var wfm = funnyMessages.tie()
+    var wdm = 'it tie'
+    gameMessages(wfm,wdm)
+   // alert("tie");
+    return;
+  }
+
+  const winRules = {
+    rock: ['scissors', 'shield'],
+    paper: ['rock', 'bomb'],
+    scissors: ['paper', 'shield'],
+    bomb: ['rock', 'paper', 'scissors'],
+    shield: ['bomb']
+  };
+
+  const playerBeats = winRules[player];
+  const computerBeats = winRules[computer];
+
+  if (playerBeats.includes(computer)) {
+    var wfm = funnyMessages.win()
+    var wdm = 'player won this round'
+    //alert("you won this round");
+    gameMessages(wfm,wdm)
+    computerScore--;
+    domcomputerScore.textContent = computerScore;
+    if (computerScore <= 0) {
+      var wdm = '!player has finally won the game! '
+    var  wfm = 'GAME OVER !!!'
+    computerScore = 10
+    playerScore = 10
+    
+      //alert('working')
+      // so we will continue other logic from here like how to reset the game and gamescore function
+      return gameMessages(wfm,wdm)
+    }
+    
+    
+  } 
+  else if (computerBeats.includes(player)) {
+    var wfm = funnyMessages.lose()
+    var wdm = 'computer won this round'
+    //alert("you lose this round");
+    gameMessages(wfm,wdm)
+    playerScore--;
+    domplayerScore.textContent = playerScore;
+    if (playerScore <= 0) {
+   var   wdm = '!computer has finally won the game! '
+    var  wfm = 'GAME OVER !!!'
+      //alert('we are good')
+            // so we will continue other logic from here like how to reset the game and gamescore function
+            return gameMessages(wfm,wdm)
+    }
+    
+  } 
+  else {
+    var wfm = funnyMessages.tie()
+    var wdm = 'no winner for this matchup'
+    gameMessages(wfm,wdm)
+    //alert("no winner for this matchup");
+  }
+}
+
   </script>
 </html>
