@@ -42,9 +42,11 @@ app.get("/", (req, res) => {
 
 
 app.post("/submit", (req, res)=>{
+     console.log(req.body.playername);
+
     const useranswer = req.body.useranswer.trim().toLowerCase();
     if(useranswer == qsts[getRandomQst].a.trim().toLocaleLowerCase()){
-        res.render("TheGame.ejs");
+        res.render("TheGame.ejs",{playerName : req.body.playername});
     } else{
         res.render("TheGate.ejs", {qst: qsts[getRandomQst].q ,isWrong: 1});
     }
