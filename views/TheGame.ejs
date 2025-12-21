@@ -7,20 +7,51 @@
   <title>RPS Battle</title>
 </head>
 <body>
-  
-   <div class="intro">
+<div class="intro">
     <div class="flash-bg"></div>
     <div class="glow-fog"></div>
     <div class="energy-ring"></div>
     <div class="sparks"></div>
-    <h1 class="title">WELCOME INTO THE <br>DARKNESS</h1>
+    <h1 class="title">WELCOME INTO THE<br>DARKNESS</h1>
     <p class="subtitle">The Battle Awaits...</p>
     <button class="start-button">ENTER GAME</button>
   </div>
   
-  
-  
   <div class="game-container">
+    <!-- Settings Icon -->
+    <svg class="settingsIcon" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="655.359" height="655.359" style="shape-rendering:geometricPrecision;text-rendering:geometricPrecision;image-rendering:optimizeQuality;fill-rule:evenodd;clip-rule:evenodd" viewBox="0 0 6.827 6.827">
+      <g id="Layer_x0020_1">
+        <path d="M3.413 1.327c-.126 0-.254.011-.381.035l-.121-.263a.328.328 0 0 0-.435-.16l-.334.152a.33.33 0 0 0-.16.436l.12.262c-.158.13-.295.279-.408.444l-.272-.1a.335.335 0 0 0-.421.193l-.127.344a.326.326 0 0 0-.02.11v.009a.329.329 0 0 0 .214.302l.272.1c-.022.2-.015.402.023.603l-.263.121a.329.329 0 0 0-.161.435l.154.333c.076.165.27.237.434.161l.264-.121c.129.16.278.296.442.409l-.1.272a.323.323 0 0 0 .01.25c.036.08.102.14.184.171l.345.127a.328.328 0 0 0 .42-.194l.1-.272c.074.008.148.012.221.012v-.789c-.504 0-.966-.296-1.177-.754a1.298 1.298 0 0 1 1.176-1.84h.001v-.788z" style="fill:#00c853;fill-rule:nonzero"/>
+        <path d="m5.76 3.734-.273-.1c.021-.2.014-.402-.023-.603l.263-.121a.328.328 0 0 0 .16-.435l-.153-.333a.327.327 0 0 0-.435-.161l-.263.121a2.07 2.07 0 0 0-.443-.409l.1-.272A.329.329 0 0 0 4.5 1L4.155.873a.336.336 0 0 0-.42.193l-.101.273a2.098 2.098 0 0 0-.217-.012h-.004v.789h.003c.503.001.964.297 1.175.754a1.298 1.298 0 0 1-1.177 1.839v.789a2.1 2.1 0 0 0 .381-.035l.121.263c.076.164.271.236.435.16l.333-.153a.328.328 0 0 0 .16-.435l-.12-.263c.159-.128.296-.278.409-.443l.272.101a.327.327 0 0 0 .42-.194l.128-.344a.328.328 0 0 0-.194-.421z" style="fill:#00e676;fill-rule:nonzero"/>
+      </g>
+    </svg>
+
+    <!-- Settings Panel -->
+    <div class="settings">
+      <p class="music">MUSIC</p>
+      <p class="ON">ON</p>
+      <p class="OFF">OFF</p>
+      <p class="time-setting">TIME</p>
+      <p class="time-on">ON</p>
+      <p class="time-off">OFF</p>
+      <p class="lvl">LEVELS</p>
+      <p class="easy">EASY</p>
+      <p class="hard">HARD</p>
+    </div>
+
+    <!-- Time Display -->
+    <div class="time">00:00:00</div>
+
+    <div class="sidebar">
+      <h2>RPS BATTLE</h2>
+      <div class="menu">
+        <a href="#">Play</a>
+        <a href="#">Lobby</a>
+        <a href="#">Tournaments</a>
+        <a href="#">Settings</a>
+      </div>
+    </div>
+
     <div class="sidebar">
       <h2>RPS BATTLE</h2>
       <div class="menu">
@@ -34,73 +65,33 @@
     <div class="main">
       <div class="battle-area">
         <div class="player">
-          <div class="lives-container">
-            <div class="life">♥️</div>
-            <div class="life">♥️</div>
-            <div class="life">♥️</div>
-            <div class="life">♥️</div>
-            <div class="life">♥️</div>
-            <div class="life">♥️</div>
-            <div class="life">♥️</div>
-            <div class="life">♥️</div>
-            <div class="life">♥️</div>
-            <div class="life">♥️</div>
+          <div class="player-lives life">
+            <h4><%= playerName %></h4>
+            <div class="player-score score">0</div>
           </div>
           <div class="emoji">✊</div>
-          <p>You</p>
+          <p><%= playerName %></p>
         </div>
         <div class="vs">VS</div>
         <div class="opponent">
-           <div class="lives-container">
-            <div class="life">♥️</div>
-            <div class="life">♥️</div>
-            <div class="life">♥️</div>
-            <div class="life">♥️</div>
-            <div class="life">♥️</div>
-            <div class="life">♥️</div>
-            <div class="life">♥️</div>
-            <div class="life">♥️</div>
-            <div class="life">♥️</div>
-            <div class="life">♥️</div>
+          <div class="computer-lives life">
+            <h4>Computer</h4>
+            <div class="computer-score score">0</div>
           </div>
           <div class="emoji">✊</div>
-          <p>Opponent</p>
+          <p>Computer</p>
         </div>
       </div>
 
       <div class="choices">
-        <button>✊ Rock</button>
-        <button>✋ Paper</button>
-        <button>✌️ Scissors</button>
-        <button>💣 Bomb</button>
-        <button>🛡️ shield</button>
+        <button type="button">✊ Rock</button>
+        <button type="button">✋ Paper</button>
+        <button type="button">✌️ Scissors</button>
+        <button type="button">💣 Bomb</button>
+        <button type="button">🛡️ Shield</button>
       </div>
     </div>
   </div>
+  <script src="RPS.js"></script>
 </body>
- <script>
-    document.addEventListener("DOMContentLoaded", () => {
-  const sparks = document.querySelector('.sparks');
-  const entergame = document.querySelector('.start-button');
-  const intro = document.querySelector('.intro');
-  const body = document.querySelector('body');
-  const gamecont = document.querySelector('.game-container');
-
-  intro.addEventListener("click", () => {
-    intro.classList.add("close-intro");
-    body.classList.add("body-height");
-    gamecont.classList.add("enter-game");
-    var audio = new Audio('music.mp3')
-    audio.loop= true;
-audio.play();
-  });
-
-  for (let i = 0; i < 24; i++) {
-    const s = document.createElement('span');
-    s.style.setProperty('--r', `${Math.random() * 360}deg`);
-    s.style.animationDelay = `${Math.random() * 2}s`;
-    sparks.appendChild(s);
-  }
-});
-  </script>
 </html>
