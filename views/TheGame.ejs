@@ -69,7 +69,7 @@
             <h4><%= playerName %></h4>
             <div class="player-score score">0</div>
           </div>
-          <div class="emoji">✊</div>
+          <div class="emoji playeremoji">✊</div>
           <p><%= playerName %></p>
         </div>
         <div class="vs">VS</div>
@@ -78,17 +78,27 @@
             <h4>Computer</h4>
             <div class="computer-score score">0</div>
           </div>
-          <div class="emoji">✊</div>
+          <div class="emoji  computeremoji">✊</div>
           <p>Computer</p>
         </div>
       </div>
 
       <div class="choices">
-        <button type="button">✊ Rock</button>
-        <button type="button">✋ Paper</button>
-        <button type="button">✌️ Scissors</button>
-        <button type="button">💣 Bomb</button>
-        <button type="button">🛡️ Shield</button>
+        <button type="button" class="player-chioce" data-id="rock">✊ Rock</button>
+        <button type="button" class="player-chioce" data-id="paper">✋ Paper</button>
+        <button type="button" class="player-chioce" data-id="Scissors">✌️ Scissors</button>
+        <button type="button" class="player-chioce bomb" data-id="bomb">💣 Bomb <span class="bomb-count"></span>
+        </button>
+        <button type="button" class="player-chioce shield" data-id="shield">🛡️ shield <span class="shield-count"></span></button>
+      </div>
+    </div>
+    <!--  Game status to display game message -->
+    <div class="game-status-container">
+      <div class="game-status">
+        <h2 class="funny-messages"></h2>
+        <h4 class="game-winner">
+        </h4>
+<button id="restart-game" class="restart-btn">Play Again</button>
       </div>
     </div>
   </div>
