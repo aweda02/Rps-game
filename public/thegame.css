@@ -17,7 +17,7 @@
 body {
   width: 100%;
   color: #fff;
-  height: 100vh;
+  height: 100dvh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -53,7 +53,7 @@ repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(139, 0, 0, 0
 
 @keyframes float {
   0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(5deg); }
+  /* 50% { transform: translateY(-20px) rotate(5deg); } */
 }
   
 /* Intro Screen */
@@ -336,8 +336,8 @@ repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(139, 0, 0, 0
   color: #ff8080;
   font-size: 14px;
   position: absolute;
-  right: 2%;
-  bottom: 2%;
+  left: 2%;
+  top: 2%;
   padding: 8px 15px;
   background: rgba(10, 0, 0, 0.8);
   border: 1px solid #8b0000;
@@ -384,8 +384,14 @@ repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(139, 0, 0, 0
   border-radius: 50%;
   box-shadow: 0 0 40px rgba(139, 0, 0, 0.8),
   inset 0 0 20px rgba(255, 0, 0, 0.3);
+  animation: idle 1s infinite;
 }
-  
+  @keyframes idle {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
 .vs {
   font-size: 2rem;
   color: #ff4040;
@@ -398,6 +404,16 @@ repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(139, 0, 0, 0
   gap: 15px;
   justify-content: space-around;
   flex-wrap: wrap;
+}
+@media (max-width:576px) {
+  
+  
+  .battle-area{
+    margin-top:100px;
+  }
+  .main{
+    justify-content: center;
+  }
 }
   
 .choices button {
@@ -452,15 +468,21 @@ width: 99%;
 height: 99%;
   }
   
+  .main{
+    padding: 0px;
+  }
+  
   .battle-area {
-flex-direction: column;
-gap: 30px;
+justify-content: space-around;
+padding: 5px;
+gap: 10px;
   }
   
   .emoji {
 font-size: 4rem;
 padding: 20px;
   }
+
   
   .choices button {
 font-size: 14px;
@@ -480,7 +502,7 @@ top: 10%;
   
   .life {
 position: absolute;
-top: 15%;
+top: 10%;
 margin: 5px 10px;
   }
   
@@ -491,4 +513,77 @@ left: 0;
   .computer-lives {
 right: 0;
   }
+}
+
+/* game status container */
+.game-status-container{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(rgba(0,0,0,0.9));
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+.game-status{
+  width: 85%;
+  max-width: 350px;
+  height: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 0 0 15px #ffff00;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    border: 3px solid #ffff00;
+    box-shadow: 0 0 25px rgba(255, 255, 0, 0.3);
+    text-transform: capitalize;
+    flex-direction: column;
+    gap: 10px;
+    
+}
+.funny-messages{
+  font-size: 36px;
+  color: #00ff66;
+  text-shadow: 0 0 30px #00ff66;
+}
+.game-winner{
+  font-size: 28px;
+  color: #ff0066;
+  text-shadow: 0 0 30px #ff0066;
+}
+.bomb-count,.shield-count{
+  color: #ffff00;
+  font-size: 12px;
+  position: absolute;
+  top: 2px;
+  right: 5px;
+}
+.bomb,.shield {
+  position: relative;
+}
+
+.restart-btn {
+    padding: 15px 40px;
+    font-size: 24px;
+    background: linear-gradient(45deg, #00ffff, #0088cc);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0 0 25px #00ffff;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    font-weight: bold;
+    display: none;
+}
+
+.restart-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 40px #00ffff;
 }
