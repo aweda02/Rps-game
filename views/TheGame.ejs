@@ -28,6 +28,8 @@
 
     <!-- Settings Panel -->
     <div class="settings">
+      <a class="reset-game" onclick="resetGame()">Restart</a>
+      <p class="show-instruction"onclick="closeInstructions()">Instruction</p>
       <p class="music">MUSIC</p>
       <p class="ON">ON</p>
       <p class="OFF">OFF</p>
@@ -66,20 +68,20 @@
       <div class="battle-area">
         <div class="player">
           <div class="player-lives life">
-            <h4><%= playerName %></h4>
+            <h4><%= playerName + "👻" %></h4>
             <div class="player-score score">0</div>
           </div>
           <div class="emoji playeremoji">✊</div>
-          <p><%= playerName %></p>
+          <p class="player-name"><%= playerName  + "👻" %></p>
         </div>
         <div class="vs">VS</div>
         <div class="opponent">
           <div class="computer-lives life">
-            <h4>Computer</h4>
+            <h4>Computer😈</h4>
             <div class="computer-score score">0</div>
           </div>
           <div class="emoji  computeremoji">✊</div>
-          <p>Computer</p>
+          <p>Computer😈</p>
         </div>
       </div>
 
@@ -101,6 +103,82 @@
 <button id="restart-game" class="restart-btn">Play Again</button>
       </div>
     </div>
+    
+   <!-- game instruction -->
+   <div class="instruction-container">
+     
+  <div class="instructions">
+    <span class="close-btn" onclick="closeInstructions()">✖</span>
+
+    <h1>🎮 Rock • Paper • Scissors (Extended Mode)</h1>
+    <p>
+      Welcome to the Rock, Paper, Scissors Battle Game!
+      This is a turn-based game between you and the computer.
+      The goal is to reduce your opponent’s score to zero.
+    </p>
+
+    <h2>🕹 How the Game Works</h2>
+    <ul>
+      <li>Player and Computer start with 10 points each</li>
+      <li>Choose a move every round</li>
+      <li>The computer randomly selects a move</li>
+      <li>The loser of a round loses 1 point</li>
+      <li>The game continues until one score reaches zero</li>
+    </ul>
+
+    <h2>⚔ Available Moves</h2>
+    <ul>
+      <li>🪨 Rock</li>
+      <li>✋ Paper</li>
+      <li>✌️ Scissors</li>
+      <li>💣 Bomb (limited use)</li>
+      <li>🛡️ Shield (limited use)</li>
+    </ul>
+
+    <h2>📜 Move Rules</h2>
+    <ul>
+      <li>Rock beats Scissors and Shield</li>
+      <li>Paper beats Rock and Bomb</li>
+      <li>Scissors beats Paper and Shield</li>
+      <li>Bomb beats Rock, Paper, and Scissors</li>
+      <li>Shield beats Bomb</li>
+      <li>Same move results in a Tie</li>
+    </ul>
+
+    <h2>💣 Bomb & 🛡 Shield Rules</h2>
+    <ul>
+      <li>Bomb can only be used 2 times</li>
+      <li>Shield can only be used 3 times</li>
+      <li>Once exhausted, the move is removed</li>
+      <li>Use special moves strategically</li>
+    </ul>
+
+    <h2>😄 Game Messages</h2>
+    <ul>
+      <li>Funny messages appear after every round</li>
+      <li>Messages change for wins, losses, and ties</li>
+    </ul>
+
+    <h2>🏆 Winning the Game</h2>
+    <ul>
+      <li>When a score reaches zero, the game ends</li>
+      <li>A GAME OVER message shows the winner</li>
+      <li>Scores reset for a new game</li>
+    </ul>
+
+    <h2>⚙ Settings</h2>
+    <ul>
+      <li>Turn background music ON or OFF</li>
+      <li>Enable or disable the time</li>
+      <li>Select Easy or Hard mode</li>
+      <li>Restart the game anytime</li>
+    </ul>
+
+    <div class="note">
+      Tip: Bomb and Shield are powerful but limited. Use them wisely to turn the game in your favor.
+    </div>
+  </div>
+  </div>
   </div>
   <script src="RPS.js"></script>
 </body>
