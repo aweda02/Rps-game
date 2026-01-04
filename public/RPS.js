@@ -15,6 +15,7 @@ const lvlBtn = document.querySelector('.lvl');
 const easyBtn = document.querySelector('.easy');
 const hardBtn = document.querySelector('.hard');
 const timeDisplay = document.querySelector('.time');
+const playerName = document.querySelector('.player-name');
 
 // State variables
 let musicOn = true;
@@ -30,6 +31,8 @@ for (let i = 0; i < 24; i++) {
 }
 // music 
 let music = new Audio("/src/Music.mp3");
+let winMusic = new Audio("/src/Win.mp3")
+let loseMusic = new Audio("/src/Lose.mp3")
 music.loop = true;
 // Start game
 startButton.addEventListener("click", () => {
@@ -134,7 +137,7 @@ function updateTime() {
   const hours = date.getHours();
   const mins = date.getMinutes();
   const secs = date.getSeconds();
-  timeDisplay.textContent = `${hours}:${mins}:${secs}`;
+  timeDisplay.textContent = `${hours}:${mins}:${secs  < 10 ? "0" + secs : secs}`;
 }
 
 setInterval(updateTime, 1000);
@@ -289,16 +292,17 @@ function decideWinner(player, computer) {
 
   if (playerBeats.includes(computer)) {
     var wfm = funnyMessages.win()
-    var wdm = 'player won this round'
+    var wdm = `${playerName.textContent} won this round`
     //alert("you won this round");
     gameMessages(wfm,wdm)
     computerScore--;
     domcomputerScore.textContent = computerScore;
     if (computerScore <= 0) {
-      var wdm = '!player has finally won the game! '
+      var wdm = `!${playerName.textContent} has finally won the game! `
     var  wfm = 'GAME OVER !!!'
       gameMessages(wfm,wdm)
-      
+      winMusic.play()
+      winMusic.loop = false
       restartGame()
     }
     
@@ -306,7 +310,7 @@ function decideWinner(player, computer) {
   } 
   else if (computerBeats.includes(player)) {
     var wfm = funnyMessages.lose()
-    var wdm = 'computer won this round'
+    var wdm = 'computer😈 won this round'
     //alert("you lose this round");
     gameMessages(wfm,wdm)
     playerScore--;
@@ -315,7 +319,8 @@ function decideWinner(player, computer) {
    var   wdm = '!computer has finally won the game! '
     var  wfm = 'GAME OVER !!!'
     gameMessages(wfm,wdm)
-    
+    loseMusic.play()
+    loseMusic.loop = false
      restartGame()
     }
     
@@ -355,11 +360,30 @@ function restartGame(){
   restart.style.display = "none"
   gameStatus.style.border = "3px solid #ffff00"
   gameStatus.style.boxShadow= "0 0 25px rgba(255, 255, 0, 0.3);"
-
+winMusic.pause()
+    loseMusic.pause()
     music.play();
   })
   
-  
 }
 
+function resetGame() {
+    computerScore = 10;
+  playerScore = 10;
+  shieldcountdown = 3;
+  bombcountdown = 2 ;
+  domplayerScore.textContent = playerScore;
+  domcomputerScore.textContent = computerScore;
+  domshieldcount.textContent = shieldcountdown;
+  domshield.style.display = "inline-block"
+  dombomb.style.display = "inline-block"
+  dombombcount.textContent = bombcountdown;
+    music.play();
+    winMusic.pause()
+    loseMusic.pause()
+}
+
+function closeInstructions() {
+      document.querySelector(".instruction-container").classList.toggle("hidden");
+    }
 
