@@ -285,21 +285,27 @@ repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(139, 0, 0, 0
 }
 
 .settings.openSettings {
+  overflow-y: scroll;
   max-height: 300px;
   padding: 10px;
 }
 
-.settings p {
+.settings p ,.settings a{
   margin: 0.5rem auto;
   text-align: center;
   cursor: pointer;
   padding: 8px;
   border-radius: 5px;
+  text-decoration: none;
   transition: all 0.3s ease;
   color: #ff8080;
 }
 
 .settings p:hover {
+  background: rgba(139, 0, 0, 0.3);
+  color: #fff;
+}
+.settings a:hover {
   background: rgba(139, 0, 0, 0.3);
   color: #fff;
 }
@@ -309,7 +315,16 @@ repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(139, 0, 0, 0
   font-weight: 600;
   font-size: 1.1rem;
 }
-
+.settings .reset-game{
+  border-bottom: 1px solid #8b0000;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+.settings .show-instruction{
+  border-bottom: 1px solid #8b0000;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
 .settings .ON,
 .settings .OFF,
 .settings .time-on,
@@ -327,7 +342,8 @@ repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(139, 0, 0, 0
 .settings .time-on.active,
 .settings .time-off.active,
 .settings .easy.active,
-.settings .hard.active {
+.settings .hard.active
+ {
   display: block;
 }
 
@@ -587,3 +603,90 @@ right: 0;
     transform: scale(1.1);
     box-shadow: 0 0 40px #00ffff;
 }
+
+/* game instructions */
+.instruction-container{
+  width: 100%;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(rgba(0,0,0,0.8));
+  transition: all 0.5s linear;
+  z-index: 99999;
+  
+}
+.hidden {
+      display: none;
+    }
+   .instructions {
+     width: 85%;
+      max-width: 800px;
+      padding: 25px;
+      max-height: 800px;
+      height: 90dvh;
+      background: #161616;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+      border: 3px solid #ff0066;
+      overflow-y: scroll;
+      
+    }
+
+    h1, h2 {
+      color: #00ff66; /* GREEN HEADERS */
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+      padding-left: 22px;
+      position: relative;
+      color: #ff0066; /* RED LIST ITEMS */
+      font-weight: 500;
+    }
+
+    ul li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #ff0066;
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .note {
+      margin-top: 20px;
+      padding: 12px;
+      background: #101010;
+      border-left: 4px solid #00ff66;
+      font-size: 14px;
+    }
+    /* CLOSE ICON */
+    .close-btn {
+      position: absolute;
+      top: 12px;
+      right: 15px;
+      font-size: 22px;
+      color: #ff0066;
+      cursor: pointer;
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+
+    .close-btn:hover {
+      color: #00ff66;
+      transform: scale(1.2);
+    }
